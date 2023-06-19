@@ -2,6 +2,7 @@ const express = require('express');
 const {PrismaClient} = require("@prisma/client");
 
 const prisma = new PrismaClient();
+const cors = require('cors');
 
 
 const redis = require('redis');
@@ -23,7 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const client_routes = require("./Routes/ClientRoutes");
 
- 
+app.use(cors());
+
 
 app.get('/', (req, res) => {
   res.send('Hi I am live!');
